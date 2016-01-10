@@ -1,5 +1,4 @@
 require './models/person_importer'
-require './models/people_finder'
 require './models/person'
 
 batch_import_configs = [
