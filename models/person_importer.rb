@@ -1,14 +1,21 @@
+require 'csv'
+
 class PersonImporter
-  require 'csv'
 
   attr_reader :filename, :options
+
+  SEPERATORS = {
+      "space" => "\s",
+      "comma" => ",\s",
+      "pipe" => "\s|\s"
+  }
 
   def initialize(config)
     @filename = config[:filename]
     @options  = {
-                  col_sep: seperator( config[:delimeter] ),
-                  headers: config[:headers]
-                }
+      col_sep: seperator( config[:delimeter] ),
+      headers: config[:headers]
+    }
   end
 
   def each_row(&block)
@@ -20,11 +27,7 @@ class PersonImporter
   private
 
   def seperator(name)
-    {
-        "space" => "\s",
-        "comma" => ",\s",
-        "pipe" => "\s|\s"
-    }[name]
+    SEPERATORS[name]
   end
 
 end
