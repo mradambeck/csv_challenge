@@ -24,6 +24,14 @@ class Person < RecordKeeper::Base
     "#{last_name} #{first_name} #{gender} #{date_of_birth} #{favorite_color}"
   end
 
+  def keys
+    ["first_name", "middle_initial", "last_name", "gender", "dob", "favorite_color"]
+  end
+
+  def values
+    [@first_name, @middle_initial, @last_name, @gender, @dob, @favorite_color]
+  end
+
   # class methods
 
   def self.sort_by_last_name
