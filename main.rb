@@ -17,7 +17,7 @@ out = conn.exec(
       last_name         varchar(40),
       middle_initial    varchar(1),
       gender            varchar(6),
-      dob               date,
+      date_of_birth     date,
       favorite_color    varchar(40)
   )"
 )
