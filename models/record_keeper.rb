@@ -7,7 +7,7 @@ class RecordKeeper
 
     attr_accessor :id
 
-    @@conn = PG.connect(dbname: ENV['DATABASE_URL'] || "csv_challenge_sql_default")
+    @@conn = PG.connect(dbname: ENV['DATABASE_URL'])
 
     def initialize(args={})
       args = HashWithIndifferentAccess.new(args)
