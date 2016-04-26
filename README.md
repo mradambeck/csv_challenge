@@ -26,11 +26,11 @@ A record consists of the following 5 fields: last name, first name, gender, date
 You may assume that the delimiters (commas, pipes and spaces) do not appear anywhere in the data values themselves. Write a Ruby program to read in records from these files and combine them into a single set of records.
 
 ###Display Requirements
-* Create and display 3 different views of the recordset (see `sample/expected_output.txt`):
+* Create 3 different views of the recordset and display them in Terminal output (see `sample/expected_output.txt`):
 
     - Output 1 – sorted by gender (females before males) then by last name ascending.
     - Output 2 – sorted by birth date, ascending.
     - Output 3 – sorted by last name, descending.
 
 * Ensure that fields are displayed in the following order: last name, first name, gender, date of birth, favorite color.
-* Display dates in the format M/D/YYYY.
+* Display dates in the format MM/DD/YYYY.
