@@ -1,4 +1,3 @@
-
 require 'csv'
 comma_values = CSV.read('sample/comma.txt')
 pipe_values = CSV.read('sample/pipe.txt', { :col_sep => '|' })
