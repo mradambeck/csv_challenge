@@ -20,39 +20,36 @@ def gender_parse(str)
   str.strip.upcase == "M" ? "Male" : "Female"
 end
 
-# TAKE EACH FILE AND PUSH EACH PERSON TO ARRAY AS OBJECTS
+
 @people = Array.new
 
-comma_values.each do |line|
-  person = Hash.new
-  person[:last_name] = line[0].strip
-  person[:first_name] = line[1].strip
-  person[:gender] = gender_parse(line[2])
-  person[:color] = line[3].strip
-  person[:date] = date_parse(line[4])
-  @people << person
-end
+# TAKE EACH FILE ENTRY AND PUSH TO ARRAY AS HASH
+def person_parser (values)
+  values.each do |line|
+    person = Hash.new
+    person[:last_name] = line[0].strip
+    person[:first_name] = line[1].strip
 
-pipe_values.each do |line|
-  person = Hash.new
-  person[:last_name] = line[0].strip
-  person[:first_name] = line[1].strip
-  person[:middle_initial] = line[2].strip
-  person[:gender] = gender_parse(line[3])
-  person[:color] = line[4].strip
-  person[:date] = date_parse(line[5])
-  @people << person
-end
+    # checks with file it's being sent
+    if line.length < 6
+      person[:gender] = gender_parse(line[2])
+      person[:color] = line[3].strip
+      person[:date] = date_parse(line[4])
+    else
+      person[:middle_initial] = line[2].strip
+      person[:gender] = gender_parse(line[3])
 
-space_values.each do |line|
-  person = Hash.new
-  person[:last_name] = line[0].strip
-  person[:first_name] = line[1].strip
-  person[:middle_initial] = line[2].strip
-  person[:gender] = gender_parse(line[3])
-  person[:date] = date_parse(line[4])
-  person[:color] = line[5].strip
-  @people << person
+      # checks with file it's being sent
+      if ( line[4][-4].to_i  !=  0 )
+        person[:date] = date_parse(line[4])
+        person[:color] = line[5].strip
+      else
+        person[:color] = line[4].strip
+        person[:date] = date_parse(line[5])
+      end
+    end
+    @people << person
+  end
 end
 
 
@@ -79,3 +76,8 @@ puts "--------------"
 @people.sort_by{ |p| p[:last_name] }.reverse.each do |person|
   output_people(person)
 end
+
+
+person_parser(pipe_values)
+person_parser(space_values)
+person_parser(comma_values)
