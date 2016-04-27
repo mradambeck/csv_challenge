@@ -7,7 +7,7 @@ space_values = CSV.read('sample/space.txt', { :col_sep => ' ' })
 # sets month & day as 2 digit numbers if single digits,
 # then combines all into mm/dd/yyyy format
 
-def date_parse(arr, str)
+def date_parse(arr)
   date = arr.strip.split(/[\/\-]/)
   ( date[0] = '0' + date[0].to_s ) if ( date[0].length < 2 )
   ( date[1] = '0' + date[1].to_s ) if ( date[1].length < 2 )
